@@ -1,0 +1,281 @@
+*{
+    text-decoration: none;
+    margin: 0px;
+    padding: 0px;
+    font-family: sans-serif;
+}
+
+#container{
+    width: 90%;
+    height: auto;
+    margin: 0px auto;
+    border: 1px solid rgba(225, 225, 226, 0.8);
+    box-shadow: 0px 0px 10px #ccc;
+    margin-top: 40px;
+    margin-bottom: 40px;
+
+    min-height: 600px;
+}
+
+/*ahora vamos a empezar a usar flexbox */
+
+#header{
+    display: flex; /*con esto pones un elemento a lado de otro*/
+    flex-direction: row; /*formato de fila*/
+    flex-wrap: wrap; /*si algo se intenta salir de la caja, lo ponga debajo*/
+    align-items: center; /*centras verticalmente*/
+    
+    height: 120px;
+    border-bottom: 1px solid rgba(225, 225, 226, 0.8);
+}
+
+.logo{
+    flex-grow: 1;/*esto es para cunado la pantalla se reduzca ocuparan todo el ancho*/
+    /*primero le doy un tamaño a nivel de flexbox*/
+    flex-basis: 50%; /*este es el tamaño de la caja del portafolio*/
+
+    font-family: Helvetica;
+    font-style: italic;
+    font-weight: 900;
+    font-size: 35px;
+
+    padding: 10px;
+    margin-left: 20px;
+    color: black;
+    text-shadow: 1px 1px 0px #ccc;
+    text-transform: uppercase;
+
+}
+
+.logo h1{
+    font-family: Helvetica;
+    font-style: italic;
+    font-weight: 900;
+    font-size: 35px;
+}
+
+/*el menu es un elemento flexible por esto le ponemos un flex-grow*/
+#menu{
+    flex-grow: 1;
+    flex-basis: 30%;
+    height: 100%;
+    padding-right: 20px;
+}
+
+#menu > ul{
+    display: flex; /*un elemento a lado de otro*/
+    flex-direction: row;
+    flex-wrap: wrap;/*en lugar de que saque un elemnto, que lo ponga abajo*/
+    align-items: center;/*para que se pongan en medio los elementos*/
+    justify-content: space-between;/*espacios entre cada elemento*/
+
+    height: 100%;
+    list-style: none;/*quitas el adorno*/
+}
+
+#menu a{
+    text-transform: uppercase;
+    color: #444;
+    padding: 15px;
+    transition: all 300ms;
+}
+
+#menu a:hover{
+    background: #ccc;
+    color: white;
+}
+
+/*el content contiene todo*/
+#content{
+    display: flex;/*con esto hacemos que el aside este a lado de los article*/
+    justify-content: space-between;/*un espacio entre media en cada elemento*/
+    padding-top: 20px;/*para que se separe de arriba */
+    padding-bottom: 20px;/*para que se separe de abajo*/
+}
+
+#projects{
+    display: flex;/*uno a lado de otro*/
+    /*todo a lado y cuando supere el tamaño de la caja que lo contiene que se vaya abajo*/
+    flex-flow: row wrap;
+    /*para que me ordene el contenido y me meta un espacio entre cada elemento*/
+    justify-content: space-between;
+    flex-basis: 90%;
+}
+
+.project{
+    flex-grow: 1;/*para que cada elemento se ajuste si es necesario*/
+    flex-basis: 220px;
+    margin-bottom: 25px;
+    margin-right: 10px;/*para que se separe cada elemento*/
+    border: 1px solid #ccc;
+}
+
+.project img{
+    width: 100%;
+}
+
+.project-info{
+    padding: 10px;
+}
+
+.project-info a{
+    font-size: 16px;
+    color: black;
+    transition: all 300ms;
+}
+
+
+.project-info a:hover{
+   color: green;
+}
+
+
+.project-info p{
+    font-size: 16px;
+    color: gray;
+    
+}
+
+#aside{
+    /*order: 2;/*con esto cambias de lugar el menu ;)*/
+    /*como este es un elemento de flexbox un elemento que esta contenido dentro de un contenedor de flexbox*/
+    flex-basis: 16%;
+    margin-right: 25px;/*para que se separe de la derecha*/
+    padding: 15px;
+
+ /*ahora vamos a comvertir todo lo que hay en el aside en un contenedor de flexbox*/
+    display: flex;
+    flex-direction: column;/*esto es para que un elemnto este abajo de otro*/
+    flex-wrap: wrap;
+}
+
+#aside h2{
+    display: block;
+    width: 100%;
+    font-size: 18px;
+    font-weight: 100;
+    color: #444;
+    padding-bottom: 10px;/*para que meta un margen por abajo interior*/
+    margin-bottom: 20px;/*para que lo separe de lo de abajo*/
+    border-bottom: 1px solid rgba(225, 225, 226, 0.8); /*linea divisora*/
+    text-align: center;
+}
+
+#aside ul{
+    list-style: none;/*para que no ponga los puntos de la lista*/
+}
+
+#aside ul li{
+    padding-bottom: 20px;
+}
+
+/*enlaces*/
+#aside a{
+    display: block;/*para poder manipularlos*/
+    padding: 20px;
+    background: #eee;
+    color: #444;
+    text-align: center;
+    transition: all 300ms;
+    text-transform: uppercase;
+}
+
+#aside a:hover{
+    background: #444;
+    color: #eee;
+}
+
+#footer{
+    display: flex;
+    flex-flow: row wrap;/*para que no se salga ningun eleemnto de lacaja*/
+    justify-content: flex-end;/*para que empieze al fin del footer*/
+
+    height: 120px;
+    align-items: center;/*para que nos centre el contenido*/
+    border-top: 1px solid rgba(225, 225, 226, 0.8);
+}
+
+#footer .logo{
+    opacity: 0.5;
+    flex-basis: auto;
+    flex-grow: 1;
+    order: 2;
+    text-align: right;
+    margin-right: 20px;
+}
+
+#footer .info{
+    flex-grow: 1;
+    order: 1;
+    margin-left: 20px;
+    color: #444;
+}
+
+@media (max-width: 1187px){
+    #header{
+        text-align: center;
+    }
+
+    #menu > ul {
+        margin-top: 20px;
+        align-items: flex-start;/*para que se vaya un poco mas hacia arriba*/
+        justify-content: space-evenly;
+    }
+}
+
+
+@media (max-width: 695px){
+
+    #content{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding-top: 20px;
+        padding-bottom: 20px;
+
+    }
+
+    #aside{
+        margin-right: 0px;
+    }
+
+    #aside ul{
+        display: flex; /*haces cuadros pequeños*/
+        flex-flow: row-wrap;
+        justify-content: space-between;/*espacios entre cada elemento*/
+    }
+
+    #aside ul li{
+        flex-grow: 1;/*haces los li flexibles ocupan mas espacio*/
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    .project{
+        margin-right: 10px;
+        margin-left: 10px;
+
+    }
+
+    #footer .logo{
+        flex-grow: 1;
+        order: 1;
+        flex-basis: 100%;
+        text-align: center;
+        margin: 0px;
+    }
+
+    #footer .info{
+        flex-grow: 1;
+        order: 2;
+        margin-left: 20px;
+        color: #444;
+        flex-basis: 100%;
+        text-align: center;
+        margin: 0px;
+    }
+
+
+}
+
